@@ -2,3 +2,4 @@
 *.so
 *.ko
 *.obj
+*.out
