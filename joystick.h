@@ -3,8 +3,8 @@
 #include "adc.h"
 
 #define BUTN   10
-#define X_PORT  0
-#define Y_PORT  1
+#define X_PORT  1
+#define Y_PORT  2
 
 /*
  *Read the joystick's x position

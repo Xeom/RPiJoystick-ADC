@@ -2,12 +2,21 @@
 
 #define MAJORITY (OCD >> 1) + (OCD & 1)
 
+#if IS_BI
+#define COMMAND 0b10
+#else
+#define COMMAND 0b11
+#endif
+
 void pulse_clock(void)
 {
+	/*Set clock to high*/
 	digitalWrite(CLK, 1);
 
+	/*Fuck around for a bit*/
 	for(int c = 0; c < WAIT; ++c){}
 
+	/*Lower clock*/
 	digitalWrite(CLK, 0);
 }
 
@@ -84,9 +93,6 @@ int read_adc(int chan)
 
 int read_adc_clean(int chan)
 {
-	/*Any count greater than this is the most common*/
-	int majority = (OCD >> 1) + (OCD & 1);
-
 	/*The largest yet value, and its count*/
 	int largestv = -1;
 	int largestc = 0;
@@ -136,7 +142,7 @@ int read_adc_clean(int chan)
 			}
 
 			/*The total occorances of this value are greater than the required amount for a majority*/
-			if (chainc >= majority)
+			if (chainc >= MAJORITY)
 				return chainv;
 
 			/*The total occorances of this value are greatest yet*/
@@ -157,7 +163,7 @@ int read_adc_clean(int chan)
 			++chainc;
 
 			/*If the chain is greater than the required amount for a majority, return it.*/
-			if (chainc >= majority)
+			if (chainc >= MAJORITY)
 				return chainv;
 		}
 	}

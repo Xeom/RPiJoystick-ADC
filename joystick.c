@@ -12,8 +12,10 @@ int read_joystick_y(void)
 
 int *read_joystick(void)
 {
+	/*Get a pointer to a 2 long array of ints*/
 	int *pos = malloc(2 * sizeof(int));
 
+	/*Insert X and Y into array*/
 	pos[0] = read_joystick_x();
 	pos[1] = read_joystick_y();
 

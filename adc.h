@@ -12,7 +12,7 @@
 #define MISO       2 /*The pin connected to the ADC's DOUT*/
 #define SS         6 /*The pin connected to the ADC's SHDN*/
 
-#define COMMAND    3 /*The request command to send to the ADC*/
+#define IS_BI      0 /*Whether to use bi pairings*/
 #define COMMANDLEN 2 /*The amount of bits the command is*/
 
 #define OCD       16 /*The OCD of the reader*/
