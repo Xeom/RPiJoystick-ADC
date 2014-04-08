@@ -88,7 +88,7 @@ int read_adc(int chan)
 		recv |= digitalRead(MISO);
 	}
 	/*Return the first 10 bits of the received packet*/
-	return recv;
+	return (recv >> 1) & 1023;
 }
 
 int read_adc_clean(int chan)
